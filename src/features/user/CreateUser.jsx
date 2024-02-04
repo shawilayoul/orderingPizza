@@ -12,7 +12,7 @@ function CreateUser() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(updateUser(username));
-    setUsername("");
+    navigate("/menu")
   }
 
   return (
@@ -32,7 +32,7 @@ function CreateUser() {
 
       {user.username !== "" && (
         <div>
-          <button className="bg-yellow-500 rounded-lg p-1" onClick={()=>navigate("/order/new")}>
+          <button className="bg-yellow-500 rounded-lg p-1" onClick={()=>navigate("/menu")}>
             Start ordering
           </button>
         </div>

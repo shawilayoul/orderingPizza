@@ -7,7 +7,7 @@ function CartItem({ item }) {
           {quantity}&times; {name}
         </p>
         <div>
-          <p>{formatCurrency(totalPrice)}</p>
+          <p>{totalPrice}</p>
         </div>
       </li>
     );

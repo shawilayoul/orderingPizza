@@ -9,6 +9,7 @@ const LayOut = () => {
        <main>
         <Outlet/>
        </main>
+       <CartOverView/>
     </div>
   )
 }
