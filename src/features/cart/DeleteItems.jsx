@@ -6,7 +6,7 @@ const DeleteItems = ({pizzaId}) => {
     const dispatch = useDispatch();
   return (
     <button
-      className="bg-yellow-500 w-20 rounded-lg p-1 w-40"
+      className="bg-red-500 text-white rounded-md p-1"
       onClick={() => dispatch(deleteCart(pizzaId))}
     >
       delete{" "}

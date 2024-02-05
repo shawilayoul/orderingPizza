@@ -26,20 +26,22 @@ function MenuItem({ pizza }) {
   };
 
   return (
-    <div>
+    <div className="">
       {/*<Link to="/order/new" className="text-blue-500">create new Order</Link>*/}
-      <li className={`flex gap-2 py-1 bg-slate-10 border-y`}>
+      <li
+        className={`flex flex-col justify-between items-center py-5 gap-3 border-1  m-2 w-40 p-2 bg-gray-100 rounded-lg`}
+      >
         <img
           src={imageUrl}
           alt={name}
-          className={`h-24 ${soldOut ? "opacity-70 grayscale" : ""}`}
+          className={`h-40  w-40 ${soldOut ? "opacity-70 grayscale" : ""}`}
         />
-        <div className=" flex grow flex-col">
+        <div className=" flex grow items-center justify-center flex-col">
           <p className="font-medium">{name}</p>
           <p className="text-sm capitalize italic text-stone-500">
             {ingredients.join(", ")}
           </p>
-          <div className="mt-auto flex items-center justify-between">
+          <div className="mt-auto flex flex-col gap-2 items-center py-2">
             {!soldOut ? (
               <p className="text-sm">{`$ ${unitPrice}`}</p>
             ) : (
@@ -48,17 +50,17 @@ function MenuItem({ pizza }) {
               </p>
             )}
             {isInCart && (
-              <div className="flex justify-center items-center gap-3">
+              <div className="flex flex-col-reverse gap-3">
                 <div className="flex items-center justify-center gap-2">
                   <button
-                    className="bg-yellow-500 p-1 rounded-lg w-10"
+                    className="bg-red-500 text-white p-1 rounded-sm w-8"
                     onClick={() => dispatch(increaseCartQuantity(id))}
                   >
                     +
                   </button>
                   <p>{currentQuantity}</p>
                   <button
-                    className="bg-yellow-500 p-1 rounded-lg w-10"
+                    className="bg-red-500 p-1 text-white rounded-sm  w-8"
                     onClick={() => dispatch(decreaseCartQuantity(id))}
                   >
                     -
@@ -69,7 +71,7 @@ function MenuItem({ pizza }) {
             )}
             {!soldOut && !isInCart ? (
               <button
-                className="text-sm bg-yellow-400 p-1 cursor-pointer rounded-full w-40"
+                className="text-sm bg-red-400  text-white cursor-pointer rounded-full px-5 py-1"
                 onClick={handleAddToCart}
               >
                 ADD TO CART

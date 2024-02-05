@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem";
 const Menu = () => {
   const menu = useLoaderData();
   return (
-    <div className="px-1">
+    <div className="flex flex-wrap px-3 my-20">
       {menu.map((pizza) => (
         <MenuItem pizza={pizza} key={pizza.id} />
       ))}
