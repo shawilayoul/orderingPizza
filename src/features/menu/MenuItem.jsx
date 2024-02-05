@@ -1,11 +1,20 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../cart/cartSlice";
+import DeleteItems from "../cart/DeleteItems";
+import {
+  getCurrentQuantityById,
+  increaseCartQuantity,
+  decreaseCartQuantity,
+} from "../cart/cartSlice";
+
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
-  const handleAddToCart = () => {
+  const isInCart = currentQuantity > 0;
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const items = {
       pizzaId: id,
       name,
@@ -13,7 +22,7 @@ function MenuItem({ pizza }) {
       unitPrice,
       totalPrice: unitPrice * 1,
     };
-    dispatch(addToCart(items))
+    dispatch(addToCart(items));
   };
 
   return (
@@ -38,15 +47,35 @@ function MenuItem({ pizza }) {
                 Sold out
               </p>
             )}
-            {soldOut ? (
-              ""
-            ) : (
+            {isInCart && (
+              <div className="flex justify-center items-center gap-3">
+                <div className="flex items-center justify-center gap-2">
+                  <button
+                    className="bg-yellow-500 p-1 rounded-lg w-10"
+                    onClick={() => dispatch(increaseCartQuantity(id))}
+                  >
+                    +
+                  </button>
+                  <p>{currentQuantity}</p>
+                  <button
+                    className="bg-yellow-500 p-1 rounded-lg w-10"
+                    onClick={() => dispatch(decreaseCartQuantity(id))}
+                  >
+                    -
+                  </button>
+                </div>
+                <DeleteItems pizzaId={id} />
+              </div>
+            )}
+            {!soldOut && !isInCart ? (
               <button
                 className="text-sm bg-yellow-400 p-1 cursor-pointer rounded-full w-40"
                 onClick={handleAddToCart}
               >
                 ADD TO CART
               </button>
+            ) : (
+              ""
             )}
           </div>
         </div>
