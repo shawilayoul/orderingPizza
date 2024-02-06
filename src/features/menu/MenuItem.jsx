@@ -29,7 +29,7 @@ function MenuItem({ pizza }) {
     <div className="">
       {/*<Link to="/order/new" className="text-blue-500">create new Order</Link>*/}
       <li
-        className={`flex flex-col justify-between items-center py-5 gap-3 border-1  m-2 w-40 p-2 bg-gray-100 rounded-lg`}
+        className={`flex flex-col justify-between items-center py-5 gap-3 border-1  m-2 w-40 p-2 shadow-2xl rounded-lg`}
       >
         <img
           src={imageUrl}

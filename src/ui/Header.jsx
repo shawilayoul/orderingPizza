@@ -17,7 +17,7 @@ const Header = () => {
         <ul className="flex gap-14 justify-between items-center">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/menu">Menu</Link></li>
-          <li>Organic</li>
+          <li>Blog</li>
           <li>Contact</li>
         </ul>
       </div>
